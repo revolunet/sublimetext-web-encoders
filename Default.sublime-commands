@@ -1,0 +1,34 @@
+[
+    {
+        "caption": "Web encoder: Base 64 encode selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "encode",
+            "codec": "base64"
+        }
+    },
+    {
+        "caption": "Web encoder: Base 64 decode selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "decode",
+            "codec": "base64"
+        }
+    },
+    {
+        "caption": "Web encoder: Url encode selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "encode",
+            "codec": "url"
+        }
+    },
+    {
+        "caption": "Web encoder: Url decode selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "decode",
+            "codec": "url"
+        }
+    }
+]

@@ -1,0 +1,57 @@
+# -*- encoding: UTF-8 -*-
+
+import sublime, sublime_plugin
+import base64
+import urllib
+
+
+class WebCodec(object):
+    """ Simple naive interface for codecs """
+    def encode(self, data):
+        return data
+
+    def decode(self, data):
+        return data
+
+
+class UrlCodec(WebCodec):
+    """ url encode/decoder """
+    def encode(self, data):
+        return urllib.quote(data)
+
+    def decode(self, data):
+        return urllib.unquote(data)
+
+
+class Base64Codec(WebCodec):
+    """ base64 encode/decoder """
+    def encode(self, data):
+        return base64.b64encode(data)
+
+    def decode(self, data):
+        return base64.b64decode(data)
+
+
+WEB_CODECS = {
+    'url': UrlCodec(),
+    'base64': Base64Codec()
+}
+
+
+class WebEncodersCommand(sublime_plugin.TextCommand):
+    """ encode/decode selectedtext for the web"""
+
+    def run(self, edit, mode='encode', codec='url'):
+        if not codec in WEB_CODECS:
+            raise Exception('codec %s not implemented' % codec)
+        regions = self.view.sel()
+        encoding = self.view.encoding()
+        if encoding == 'Undefined':
+            encoding = 'UTF-8'
+        elif encoding == 'Western (Windows 1252)':
+            encoding = 'windows-1252'
+        for region in regions:
+            data = (self.view.substr(region).encode(encoding))
+            replaced = getattr(WEB_CODECS[codec], mode)(data).decode(encoding)
+            self.view.replace(edit, region, replaced)
+
