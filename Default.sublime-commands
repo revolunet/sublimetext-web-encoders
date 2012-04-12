@@ -30,5 +30,21 @@
             "mode": "decode",
             "codec": "url"
         }
+    },
+    {
+        "caption": "Web encoder: HTML encode selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "encode",
+            "codec": "html"
+        }
+    },
+    {
+        "caption": "Web encoder: HTML decode selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "decode",
+            "codec": "html"
+        }
     }
 ]

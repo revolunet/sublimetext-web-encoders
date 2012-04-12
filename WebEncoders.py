@@ -32,9 +32,30 @@ class Base64Codec(WebCodec):
         return base64.b64decode(data)
 
 
+class HtmlCodec(WebCodec):
+    """ html encode/decoder """
+    CODES = [
+        ['&', '&amp;'],
+        ['<', '&lt;'],
+        ['>', '&gt;'],
+        ['"', '&quot;'],
+    ]
+
+    def encode(self, data):
+        for from_, to in self.CODES:
+            data = data.replace(from_, to)
+        return data
+
+    def decode(self, data):
+        for from_, to in self.CODES:
+            data = data.replace(to, from_)
+        return data
+
+
 WEB_CODECS = {
     'url': UrlCodec(),
-    'base64': Base64Codec()
+    'base64': Base64Codec(),
+    'html': HtmlCodec()
 }
 
 
@@ -54,4 +75,3 @@ class WebEncodersCommand(sublime_plugin.TextCommand):
             data = (self.view.substr(region).encode(encoding))
             replaced = getattr(WEB_CODECS[codec], mode)(data).decode(encoding)
             self.view.replace(edit, region, replaced)
-

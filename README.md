@@ -5,6 +5,8 @@ A simple ST2 plugin to help you encode/decode data
 
 Select the text you want to encode then `cmd+shift+P` and select your encoder.
 
+Currently supports base64, urlencoding and HTML encoding
+
 **Installation :**
 
  - you should use [sublime package manager][1]
