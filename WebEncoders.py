@@ -20,7 +20,7 @@ class UrlCodec(WebCodec):
         return urllib.quote(data)
     
     def escape(self, data):
-        return urllib.quote(data, '@*+')
+        return urllib.quote(data, '/@+*')
     
     def encodeURI(self, data):
         return urllib.quote(data, ';,/?:@&=+$-_.!~*()#\'')
