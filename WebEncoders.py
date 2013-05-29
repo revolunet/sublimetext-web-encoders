@@ -19,6 +19,9 @@ class UrlCodec(WebCodec):
     def encode(self, data):
         return urllib.quote(data)
     
+    def escape(self, data):
+        return urllib.quote(data, '@*+')
+    
     def encodeURI(self, data):
         return urllib.quote(data, ';,/?:@&=+$-_.!~*()#\'')
     

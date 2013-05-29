@@ -27,7 +27,7 @@
         "caption": "Web encoder: Url escape selection",
         "command": "web_encoders",
         "args": {
-            "mode": "encode",
+            "mode": "escape",
             "codec": "url"
         }
     },
