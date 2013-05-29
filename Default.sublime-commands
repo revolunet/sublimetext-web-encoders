@@ -24,10 +24,34 @@
         }
     },
     {
+        "caption": "Web encoder: Url escape selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "encode",
+            "codec": "url"
+        }
+    },
+    {
         "caption": "Web encoder: Url decode selection",
         "command": "web_encoders",
         "args": {
             "mode": "decode",
+            "codec": "url"
+        }
+    },
+    {
+        "caption": "Web encoder: Url encodeURI selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "encodeURI",
+            "codec": "url"
+        }
+    },
+    {
+        "caption": "Web encoder: Url encodeURIComponent selection",
+        "command": "web_encoders",
+        "args": {
+            "mode": "encodeURIComponent",
             "codec": "url"
         }
     },
