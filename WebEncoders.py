@@ -18,6 +18,15 @@ class UrlCodec(WebCodec):
     """ url encode/decoder """
     def encode(self, data):
         return urllib.quote(data)
+    
+    def escape(self, data):
+        return urllib.quote(data, '/@+*')
+    
+    def encodeURI(self, data):
+        return urllib.quote(data, ';,/?:@&=+$-_.!~*()#\'')
+    
+    def encodeURIComponent(self, data):
+        return urllib.quote(data, '-_.!~*()\'')
 
     def decode(self, data):
         return urllib.unquote(data)
